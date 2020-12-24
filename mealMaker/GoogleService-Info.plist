@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1069446295990-9rr4jtq499pf79rtfspej730ajnbcp9c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1069446295990-9rr4jtq499pf79rtfspej730ajnbcp9c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCDJslDcEprnweJoqlsrpJoc0-HmgMYrns</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1069446295990</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>isaacm.mealMaker</string>
+	<key>PROJECT_ID</key>
+	<string>mealmaker-61eb7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mealmaker-61eb7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1069446295990:ios:e18bd5608962a3ccd21117</string>
+	<key>DATABASE_URL</key>
+	<string>https://mealmaker-61eb7.firebaseio.com</string>
+</dict>
+</plist>

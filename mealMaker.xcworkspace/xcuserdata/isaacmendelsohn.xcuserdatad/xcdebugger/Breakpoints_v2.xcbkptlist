@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "BCEB47FE-3ADB-468B-93D8-B1245DD74DC6"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87F98EC8-D4C7-41DE-B0D2-FFC9C2EE2C07"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mealMaker/Controller/DishCreator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "toIngredients(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mealMaker/Controller/DishCreator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "DishCreator"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - 2eb7ff147f971e2d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.ingredients.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - b64225d118cd5319"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.ingredients.setter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - 3e2f72012f088149"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.ingredients.modify : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - 7bee19e7f9c59074"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.ingredients.modify : Swift.Array&lt;Swift.String&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - f30f28471b73265"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; mealMaker.DishCreator"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "744">
+               </Location>
+               <Location
+                  uuid = "4AB964A5-1886-4DC5-9CB4-2B83731B7AB0 - 9a5f40f75deeb42f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mealMaker.DishCreator.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;mealMaker.DishCreator&gt;"
+                  moduleName = "mealMaker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaacmendelsohn/Documents/2020%20Summer%20App%20Development/mealMaker/mealMaker/Controller/DishCreator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "720">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2033507D-6EBD-4216-8BE9-C09B26E663C1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mealMaker/Controller/DishCatagoryController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "100AD648-8124-4509-A2CE-FF34C8AC8969"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mealMaker/Controller/DishListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79CE8843-D382-4612-8C70-BF1A66FA218A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mealMaker/Controller/DishListController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "tableView(_:commit:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

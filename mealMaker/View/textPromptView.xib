@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="textPromptView" customModule="mealMaker" customModuleProvider="target">
+            <connections>
+                <outlet property="text" destination="QCM-jg-6N5" id="qsr-ms-ToH"/>
+                <outlet property="textBox" destination="Qr4-m7-fhJ" id="ROm-II-ZtV"/>
+                <outlet property="textPromptView" destination="iN0-l3-epB" id="soC-IU-IsM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="492" height="61"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QCM-jg-6N5">
+                    <rect key="frame" x="10" y="0.0" width="60" height="61"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="VlQ-36-fvE" userLabel="width = 100"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type text here" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Qr4-m7-fhJ">
+                    <rect key="frame" x="90" y="0.0" width="402" height="61"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Qr4-m7-fhJ" secondAttribute="bottom" id="6Y6-m9-ZFq"/>
+                <constraint firstItem="Qr4-m7-fhJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hm5-Ab-xpy"/>
+                <constraint firstItem="QCM-jg-6N5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="VRX-Ql-hWw"/>
+                <constraint firstItem="Qr4-m7-fhJ" firstAttribute="leading" secondItem="QCM-jg-6N5" secondAttribute="trailing" constant="20" id="aVX-8G-X2X"/>
+                <constraint firstAttribute="trailing" secondItem="Qr4-m7-fhJ" secondAttribute="trailing" id="kbt-DA-l6Z"/>
+                <constraint firstAttribute="bottom" secondItem="QCM-jg-6N5" secondAttribute="bottom" id="lEf-2p-XU7"/>
+                <constraint firstItem="QCM-jg-6N5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lcM-jn-NLo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="400.00000000000006" y="28.459821428571427"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
