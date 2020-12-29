@@ -8,10 +8,15 @@
 import UIKit
 import Firebase
 class WelcomeController: UIViewController {
+    @IBOutlet weak var familyProfileButton: UIButton!
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadFirebase.loadDishes()
+        
+        navigationItem.title = temp.currentFamily
+        familyProfileButton.layer.cornerRadius = 0.5 * familyProfileButton.bounds.size.width
+        
         // Do any additional setup after loading the view.
     }
     

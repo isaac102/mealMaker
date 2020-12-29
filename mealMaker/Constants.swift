@@ -23,6 +23,7 @@ struct K {
         static let DishCreatorToGeneralUse = "DishCreatorToGeneralUse"
         static let FamiliesToHome = "FamiliesToHome"
         static let familyJoinToWelcome = "familyJoinToWelcome"
+        static let FamilySelectorToJoinFamily = "FamilySelectorToJoinFamily"
         
         
     }
@@ -33,5 +34,7 @@ struct K {
         static let familyDocument = "familiesDocument"
         static let userCollection = "users"
         static let passwordDocument = "password"
+        static let adminUsersDocument = "adminUsers"
+        static let regularUsers = "regularUsers"
     }
 }

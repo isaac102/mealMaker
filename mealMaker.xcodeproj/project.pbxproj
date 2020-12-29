@@ -35,6 +35,7 @@
 		107EB22D257078B30016D5D3 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107EB22C257078B30016D5D3 /* Temp.swift */; };
 		10C7242C258FBB9400CD38DE /* FamilySelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7242B258FBB9400CD38DE /* FamilySelectorController.swift */; };
 		10C7242F2590F87900CD38DE /* FamilyCreatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7242E2590F87900CD38DE /* FamilyCreatorController.swift */; };
+		10C72432259A3D2300CD38DE /* FamilyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C72431259A3D2300CD38DE /* FamilyProfile.swift */; };
 		E6E4F7BE2055457AF7FA6EA7 /* Pods_mealMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 392E20EB88EEF72E98198E2F /* Pods_mealMaker.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		107EB22C257078B30016D5D3 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		10C7242B258FBB9400CD38DE /* FamilySelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilySelectorController.swift; sourceTree = "<group>"; };
 		10C7242E2590F87900CD38DE /* FamilyCreatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyCreatorController.swift; sourceTree = "<group>"; };
+		10C72431259A3D2300CD38DE /* FamilyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyProfile.swift; sourceTree = "<group>"; };
 		392E20EB88EEF72E98198E2F /* Pods_mealMaker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mealMaker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC45C9E952E7404A78C37936 /* Pods-mealMaker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealMaker.release.xcconfig"; path = "Target Support Files/Pods-mealMaker/Pods-mealMaker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 			children = (
 				107EB20E256DB3180016D5D3 /* logIn */,
 				107EB1A825670FC10016D5D3 /* WelcomeController.swift */,
+				10C72431259A3D2300CD38DE /* FamilyProfile.swift */,
 				107EB1E8256C755C0016D5D3 /* MenuCreator.swift */,
 				10C7242B258FBB9400CD38DE /* FamilySelectorController.swift */,
 				107EB1EB256C756F0016D5D3 /* DishCreator.swift */,
@@ -322,6 +325,7 @@
 				1028D9502566DCB00037EAE6 /* AppDelegate.swift in Sources */,
 				1048A53525759D4300C1D81F /* FoodStorage.swift in Sources */,
 				107EB229256EF2970016D5D3 /* Constants.swift in Sources */,
+				10C72432259A3D2300CD38DE /* FamilyProfile.swift in Sources */,
 				101C6C25258184F70050CE76 /* DishListController.swift in Sources */,
 				10C7242C258FBB9400CD38DE /* FamilySelectorController.swift in Sources */,
 				1048A53225759C3700C1D81F /* Dish.swift in Sources */,

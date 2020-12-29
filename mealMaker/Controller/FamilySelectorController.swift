@@ -27,6 +27,10 @@ class FamilySelectorController: UIViewController{
     }
     
     
+    @IBAction func addFamilyPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: K.Segues.FamilySelectorToJoinFamily, sender: self)
+        
+    }
     
     @IBAction func goToFamilyPressed(_ sender: Any) {
         if(selectedFamily == ""){
