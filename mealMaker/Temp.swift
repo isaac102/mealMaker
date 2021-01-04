@@ -15,7 +15,9 @@ public class temp{
     static var loadedFirebase = false
     static var currentFamily:String = ""
     static var allFamilies:[String] = ["No family yet, please join or create one"]
-    
+    static var currentMode = K.Modes.regularMode
+    static var addedDish = ""
+    static var addDishToDay = "0"
     static var allCategories: [String] = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
     
     
