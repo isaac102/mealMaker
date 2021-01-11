@@ -614,7 +614,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Menu Creator" id="fRe-xU-nLx" customClass="menu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UGi-k9-o0h"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UGi-k9-o0h">
+                            <connections>
+                                <action selector="savePressed:" destination="jhN-PV-aaG" id="8RN-Qt-GRc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outletCollection property="otherLabels" destination="7V6-zS-Oaq" collectionClass="NSMutableArray" id="KwR-g7-Cdv"/>
@@ -752,7 +756,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dish Creator" id="7El-5Z-NED">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="9wm-hY-LFQ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="9wm-hY-LFQ">
                             <connections>
                                 <action selector="savePressed:" destination="Bw5-1z-72d" id="aRJ-Af-dhu"/>
                             </connections>
@@ -760,6 +764,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dish" destination="hg2-Qg-Zcq" id="BQn-MH-qoO"/>
+                        <outlet property="saveedit" destination="9wm-hY-LFQ" id="zgn-ai-Tvf"/>
                         <segue destination="lza-Wb-WYg" kind="presentation" identifier="DishCreatorToItemDetail" id="FeR-MK-4lI"/>
                         <segue destination="Rdw-ZI-7YC" kind="presentation" identifier="DishCreatorToIngredients" id="Ekx-60-fJO"/>
                         <segue destination="DE5-Vs-7Mf" kind="presentation" identifier="DishCreatorToGeneralUse" id="dcC-st-qJN"/>
@@ -1030,7 +1035,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2cs-Vg-i8i">
                             <connections>
                                 <action selector="addCatagory:" destination="bH9-gn-Q2x" id="vDJ-x4-lgJ"/>
-                                <segue destination="Bw5-1z-72d" kind="show" id="1CV-gu-G1A"/>
+                                <segue destination="Bw5-1z-72d" kind="show" identifier="DishListToDishCreator" id="1CV-gu-G1A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1111,6 +1116,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addItemOutlet" destination="oEH-jZ-GGe" id="yMt-v7-gcQ"/>
                         <outlet property="tableView" destination="1Cn-6o-pFc" id="Iau-Op-SsQ"/>
                         <outlet property="titleLabel" destination="kGu-vm-jfj" id="8Cz-EK-OME"/>
                     </connections>
@@ -1334,6 +1340,7 @@
                     </view>
                     <connections>
                         <outlet property="adminUsersText" destination="d14-tJ-Mo6" id="ur0-DP-7Xv"/>
+                        <outlet property="familyName" destination="cmV-kU-v9S" id="JfG-TP-xoL"/>
                         <outlet property="nonAdminUsersText" destination="9er-4K-v1P" id="Len-SI-ljV"/>
                         <outlet property="passwordtext" destination="czP-wh-uh9" id="4XN-1b-ntf"/>
                     </connections>
@@ -1344,7 +1351,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tuz-6g-9VC"/>
+        <segue reference="c7U-M0-fc2"/>
         <segue reference="ZYf-Jh-Qvh"/>
         <segue reference="38s-Ew-2xN"/>
         <segue reference="gwK-mt-t8W"/>

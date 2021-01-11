@@ -13,12 +13,15 @@ class FamilyProfile: UIViewController{
     @IBOutlet weak var passwordtext: UILabel!
     @IBOutlet weak var adminUsersText: UILabel!
     @IBOutlet weak var nonAdminUsersText: UILabel!
+    @IBOutlet weak var familyName: UILabel!
+    
     var adminUsers = ""
     var noAdminUsers = ""
     
     
     override func viewDidLoad() {
         //admin Users
+        familyName.text = temp.currentFamily
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.adminUsersDocument).getDocument { (document, error) in
                 if let document = document, document.exists{
                     if let adminUsers = document.data()?[K.FStore.adminUsersDocument] as? [String]{

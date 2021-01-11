@@ -37,10 +37,16 @@ class GeneralTableViewController: UIViewController, UIPickerViewDataSource, UIPi
     var list:[String] = []
     var notIncludedCategories:[String] = ["Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
     
+    @IBOutlet weak var addItemOutlet: UIButton!
+    
     var dataStorage = ""
     var alertMessage = ""
     override func viewDidLoad() {
-        
+        if temp.editDishMode{
+            addItemOutlet.isHidden = false
+        }else{
+            addItemOutlet.isHidden = true
+        }
         tableView.dataSource = self
         titleLabel.text = temp.tableViewController.controller
         
@@ -72,6 +78,7 @@ class GeneralTableViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     
     @IBAction func addCell(_ sender: UIButton) {
+        
         if(dataStorage == "Categories"){
             let alert = UIAlertController(title: "Add Category", message: "\n\n\n\n\n\n", preferredStyle: .alert)
 //                    alert.isModalInPopover = true
@@ -100,7 +107,6 @@ class GeneralTableViewController: UIViewController, UIPickerViewDataSource, UIPi
                     self.present(alert,animated: true, completion: nil )
         }else{
             var textF = UITextField()
-            
             let alert = UIAlertController(title: alertMessage, message: "", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                 if let text = textF.text{
@@ -154,14 +160,20 @@ extension GeneralTableViewController:UITableViewDataSource{
                 list.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             
-        }
+            }
         
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
         if(list[indexPath.row] == "All"){
             return false
         }
-        return true
+        if temp.editDishMode{
+            return true
+        }else{
+            return false
+        }
+        
     }
     
     

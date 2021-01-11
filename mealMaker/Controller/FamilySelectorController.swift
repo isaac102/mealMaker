@@ -12,6 +12,7 @@ class FamilySelectorController: UIViewController{
     let db = Firestore.firestore()
     var families = temp.allFamilies
     var selectedFamily = temp.currentFamily
+    var alteredPicker = false
     
     
     @IBOutlet weak var familyPicker: UIPickerView!
@@ -28,6 +29,10 @@ class FamilySelectorController: UIViewController{
     
     
     @IBAction func addFamilyPressed(_ sender: UIButton) {
+        if !alteredPicker{
+            familyPicker.selectRow(0, inComponent: 0, animated: true)
+
+        }
         self.performSegue(withIdentifier: K.Segues.FamilySelectorToJoinFamily, sender: self)
         
     }
@@ -59,9 +64,11 @@ extension FamilySelectorController: UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        alteredPicker = true
         selectedFamily = families[row]
     }
     
+        
     
     
     

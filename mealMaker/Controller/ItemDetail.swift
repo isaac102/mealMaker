@@ -26,6 +26,11 @@ class ItemDetail: UIViewController{
         default:
             itemTextBox.text = ""
         }
+        if !temp.editDishMode{
+            itemTextBox.isUserInteractionEnabled = false
+        }else{
+            itemTextBox.isUserInteractionEnabled = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

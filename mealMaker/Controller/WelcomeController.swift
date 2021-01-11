@@ -12,7 +12,9 @@ class WelcomeController: UIViewController {
     let db = Firestore.firestore()
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadFirebase.loadDishes()
+        LoadFirebase.loadFirebase()
+        
+        familyProfileButton.setTitle("\(temp.currentFamily.prefix(1))", for: .normal)
         
         navigationItem.title = temp.currentFamily
         familyProfileButton.layer.cornerRadius = 0.5 * familyProfileButton.bounds.size.width

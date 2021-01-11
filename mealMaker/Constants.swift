@@ -25,7 +25,7 @@ struct K {
         static let familyJoinToWelcome = "familyJoinToWelcome"
         static let FamilySelectorToJoinFamily = "FamilySelectorToJoinFamily"
         static let MenuCreatorToDishCategories = "MenuCreatorToDishCategories"
-        
+        static let DishListToDishCreator = "DishListToDishCreator"
     }
     
     struct FStore{
@@ -36,6 +36,10 @@ struct K {
         static let passwordDocument = "password"
         static let adminUsersDocument = "adminUsers"
         static let regularUsers = "regularUsers"
+        static let menuDocument = "menus"
+        static let menuCollection = "menus"
+        static let menuDetails = "menuDetails"
+        
     }
     
     struct Modes{

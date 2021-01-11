@@ -9,6 +9,12 @@ import Foundation
 import Firebase
 class LoadFirebase{
     
+    public static func loadFirebase(){
+        loadDishes()
+        loadMenus()
+        temp.loadedFirebase = true
+    }
+    
     
     public static func loadDishes(){
         let db = Firestore.firestore()
@@ -29,6 +35,28 @@ class LoadFirebase{
                 }
             }
             temp.loadedFirebase = true
+        }
+    }
+    
+    
+    
+    public static func loadMenus(){
+        let db = Firestore.firestore()
+
+        db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.menuDocument).collection(K.FStore.menuCollection).getDocuments { (querySnapshot, error) in
+            if let e = error {
+                print("there was an error retrieving data from firestore: \(e)")
+                
+            }else{
+                if let snapshotDocument = querySnapshot?.documents{
+                    var holdMenus:[String] = []
+                    for doc in snapshotDocument{
+                        holdMenus.append(doc.data()["name"] as! String)
+                    }
+                    temp.menus = holdMenus
+                }
+            }
+            
         }
     }
     

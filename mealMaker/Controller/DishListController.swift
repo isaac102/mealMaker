@@ -25,11 +25,44 @@ class DishListController: UIViewController, UITableViewDelegate, UINavigationCon
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
         dishes = temp.dishes
+        temp.editDishMode = true
 
     }
     
     
-    
+    func loadDish(name:String){
+        temp.editDishMode = false
+        
+        let dish = self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(name)
+        dish.getDocument { (document, error) in
+            if let document = document, document.exists{
+                temp.itemSpecifics.itemSpecificName = name
+                if let categories = document.data()?["category"] as? [String]{
+                    temp.itemSpecifics.itemSpecificCategories = categories
+                }
+                if let allergies = document.data()?["allergy"] as? [String]{
+                    temp.itemSpecifics.itemSpecificAllergyInfo = allergies
+                }
+                if let ingredients = document.data()?["ingredients"] as? [String]{
+                    temp.itemSpecifics.itemSpecificIngredients = ingredients
+                }
+                if let notes = document.data()?["notes"] as? String{
+                    temp.itemSpecifics.itemSpecificNotes = notes
+                }
+                if let directions = document.data()?["directions"] as? String{
+                    temp.itemSpecifics.itemSpecificDirections = directions
+                }
+                
+                
+            }else{
+                print("document does not exist")
+            }
+            
+            
+        
+            self.performSegue(withIdentifier: K.Segues.DishListToDishCreator, sender: self)
+        }
+    }
     
     
     
@@ -52,7 +85,7 @@ extension DishListController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Called!")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DishCell", for: indexPath)
         cell.textLabel?.text = dishes[indexPath.row]["name"] as? String
         return cell
@@ -70,6 +103,9 @@ extension DishListController: UITableViewDataSource{
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            
+        }else{
+            loadDish(name: dishes[indexPath.row]["name"] as! String)
             
         }
     }

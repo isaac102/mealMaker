@@ -42,11 +42,25 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     var ingredients: [String] = temp.itemSpecifics.itemSpecificIngredients
     
     
+    @IBOutlet weak var saveedit: UIBarButtonItem!
     
     
     override func viewDidLoad() {
-        
+        if(temp.editDishMode == false){
+            saveedit.title = "Edit"
+            setEditMode(canEdit: false)
+            dish.text = temp.itemSpecifics.itemSpecificName
+        }
    
+    }
+    
+    func setEditMode(canEdit: Bool){
+        if canEdit{
+            dish.isUserInteractionEnabled = true
+        }else{
+            dish.isUserInteractionEnabled = false
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,66 +130,86 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
        
     }
     
+    
+    func updateDish(){
+        db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(temp.itemSpecifics.itemSpecificName).setData([
+            "name": temp.itemSpecifics.itemSpecificName,
+            "category": temp.itemSpecifics.itemSpecificCategories,
+            "allergy": temp.itemSpecifics.itemSpecificAllergyInfo,
+            "ingredients": temp.itemSpecifics.itemSpecificIngredients,
+            "directions":temp.itemSpecifics.itemSpecificDirections,
+            "notes": temp.itemSpecifics.itemSpecificNotes
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+                
+            }
+        }
+    }
 
     
     @IBAction func savePressed(_ sender: Any) {
-        
-        if dish.text == ""{
-            Alert.createAlert(title: "Every dish needs a name", message: "", viewController: self)
-            return
-        }
-        if let name = dish.text{
-            if(!FoodStorage.containsDish(name: name)){
-                
-                FoodStorage.dishes.append(Dish(name: name, category: temp.itemSpecifics.itemSpecificCategories, allergyInfo: temp.itemSpecifics.itemSpecificAllergyInfo, ingredients: temp.itemSpecifics.itemSpecificIngredients, directions: temp.itemSpecifics.itemSpecificDirections, notes: temp.itemSpecifics.itemSpecificNotes))
-                Alert.createAlert(title: "Dish Created!", message: "\(self.dish.text!)", viewController: self)
-            }else{
-                Alert.createAlert(title: "A dish with this name exists", message: "", viewController: self)
-            }
+        if temp.editDishMode == false{
+            temp.editDishMode = true
+            saveedit.title = "Save"
         }else{
-            print("error-------------error---------------error---------------error")
-        }
-        //print(FoodStorage.dishes)
-//        for dish in FoodStorage.dishes{
-//            db.collection(K.FStore.dishCollection).document(dish.name).setData([
-//                "name": dish.name,
-//                "category": categoryList,
-//                "allergy": dish.allergyInfo,
-//                "ingredients": dish.ingredients,
-//                "notes": dish.notes
-//            ]) { err in
-//                if let err = err {
-//                    print("Error writing document: \(err)")
-//                } else {
-//                    print("Document successfully written!")
-//
-//                }
-//            }
-//
-//        }
-        
-        //load firebase into family storage
-        for dish in FoodStorage.dishes{
-            db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(dish.name).setData([
-                "name": dish.name,
-                "category": categoryList,
-                "allergy": dish.allergyInfo,
-                "ingredients": dish.ingredients,
-                "notes": dish.notes
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                    
-                }
+            if dish.text == ""{
+                Alert.createAlert(title: "Every dish needs a name", message: "", viewController: self)
+                return
             }
+            if let name = dish.text{
+                if(!FoodStorage.containsDish(name: name) && !temp.containsDish(name: name)){
+                    
+                    FoodStorage.dishes.append(Dish(name: name, category: temp.itemSpecifics.itemSpecificCategories, allergyInfo: temp.itemSpecifics.itemSpecificAllergyInfo, ingredients: temp.itemSpecifics.itemSpecificIngredients, directions: temp.itemSpecifics.itemSpecificDirections, notes: temp.itemSpecifics.itemSpecificNotes))
+                    Alert.createAlert(title: "Dish Created!", message: "\(self.dish.text!)", viewController: self)
+                    temp.editDishMode = false
+                    saveedit.title = "Edit"
+
+                }else{
+                    let alert = UIAlertController(title: "A dish with this name already exists, would you like to update it?", message: name, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.updateDish()
+                        Alert.createAlert(title: "Dish Updated", message: "", viewController: self)
+                        temp.editDishMode = false
+                        self.saveedit.title = "Edit"
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }else{
+                print("error-------------error---------------error---------------error")
+            }
+
+            
+            for dish in FoodStorage.dishes{
+                db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(dish.name).setData([
+                    "name": dish.name,
+                    "category": categoryList,
+                    "allergy": dish.allergyInfo,
+                    "ingredients": dish.ingredients,
+                    "directions":dish.directions,
+                    "notes": dish.notes
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                        
+                    }
+                }
+            
+            }
+            
+            LoadFirebase.loadDishes()
+            
+        }
         
         }
         
-        LoadFirebase.loadDishes()
-        
-    }
     
     
     

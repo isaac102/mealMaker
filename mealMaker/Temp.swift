@@ -11,6 +11,7 @@ public class temp{
     
     
     static var dishes:[[String: Any]] = []
+    static var menus:[String] = []
     static var currentUser = ""
     static var loadedFirebase = false
     static var currentFamily:String = ""
@@ -19,6 +20,7 @@ public class temp{
     static var addedDish = ""
     static var addDishToDay = "0"
     static var allCategories: [String] = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+    static var editDishMode = true
     
     
     
@@ -34,5 +36,15 @@ public class temp{
         static var itemSpecificNotes:String = ""
         static var itemSpecificIngredients: [String] = []
     }
+    
+    static func containsDish(name:String) -> Bool{
+        for dish in dishes{
+            if name == dish["name"] as! String{
+                return true
+            }
+        }
+        return false
+    }
+    
     
 }

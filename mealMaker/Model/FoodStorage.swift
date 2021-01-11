@@ -37,6 +37,7 @@ struct FoodStorage {
             "category": dish.category,
             "allergy": dish.allergyInfo,
             "ingredients": dish.ingredients,
+            "directions":dish.directions,
             "notes": dish.notes
         ]) { err in
             if let err = err {
