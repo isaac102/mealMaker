@@ -227,6 +227,9 @@
                                         <state key="normal" title="Menus">
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="vxd-b5-ca6" kind="show" id="CVG-Sq-aTx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eti-yt-2MT">
                                         <rect key="frame" x="0.0" y="111" width="200" height="36"/>
@@ -1349,12 +1352,70 @@
             </objects>
             <point key="canvasLocation" x="3480" y="-646"/>
         </scene>
+        <!--Menus-->
+        <scene sceneID="HJt-lU-zWb">
+            <objects>
+                <viewController id="vxd-b5-ca6" customClass="MenuListController" customModule="mealMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SYE-Bw-TCf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Twn-44-4uJ">
+                                <rect key="frame" x="5" y="153" width="414" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" id="UPE-Av-zVj" customClass="TableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UPE-Av-zVj" id="hys-3y-Y2B">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Category or Dish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jz7-Tf-yhE">
+                                <rect key="frame" x="5" y="93" width="404" height="50"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XSs-AV-wub"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U76-co-Irw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Twn-44-4uJ" secondAttribute="bottom" id="8MQ-6l-C0a"/>
+                            <constraint firstItem="U76-co-Irw" firstAttribute="trailing" secondItem="jz7-Tf-yhE" secondAttribute="trailing" constant="5" id="E6z-1o-ocP"/>
+                            <constraint firstItem="jz7-Tf-yhE" firstAttribute="leading" secondItem="U76-co-Irw" secondAttribute="leading" constant="5" id="U3r-3S-hVM"/>
+                            <constraint firstItem="jz7-Tf-yhE" firstAttribute="top" secondItem="U76-co-Irw" secondAttribute="top" constant="5" id="euO-gv-bDp"/>
+                            <constraint firstItem="Twn-44-4uJ" firstAttribute="leading" secondItem="U76-co-Irw" secondAttribute="leading" constant="5" id="jye-5r-KCw"/>
+                            <constraint firstItem="Twn-44-4uJ" firstAttribute="trailing" secondItem="U76-co-Irw" secondAttribute="trailing" constant="5" id="nWe-q4-7eY"/>
+                            <constraint firstItem="Twn-44-4uJ" firstAttribute="top" secondItem="jz7-Tf-yhE" secondAttribute="bottom" constant="10" id="sna-xj-eeP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Menus" id="eiL-YS-eeq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YZ8-dM-inO"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="jz7-Tf-yhE" id="QHT-zK-BjJ"/>
+                        <outlet property="tableView" destination="Twn-44-4uJ" id="RdO-Vy-eYy"/>
+                        <segue destination="jhN-PV-aaG" kind="show" identifier="MenuListToMenu" id="ge5-fd-dqD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaB-u7-Lar" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4329" y="-646"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="c7U-M0-fc2"/>
-        <segue reference="ZYf-Jh-Qvh"/>
-        <segue reference="38s-Ew-2xN"/>
-        <segue reference="gwK-mt-t8W"/>
+        <segue reference="FeR-MK-4lI"/>
+        <segue reference="1CV-gu-G1A"/>
+        <segue reference="ge5-fd-dqD"/>
+        <segue reference="sDm-QM-DPU"/>
         <segue reference="TfR-EE-0iE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

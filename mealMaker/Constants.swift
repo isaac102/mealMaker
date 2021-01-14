@@ -26,6 +26,7 @@ struct K {
         static let FamilySelectorToJoinFamily = "FamilySelectorToJoinFamily"
         static let MenuCreatorToDishCategories = "MenuCreatorToDishCategories"
         static let DishListToDishCreator = "DishListToDishCreator"
+        static let MenuListToMenu = "MenuListToMenu"
     }
     
     struct FStore{

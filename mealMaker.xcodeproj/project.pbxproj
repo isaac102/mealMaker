@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1003762625ADFB3800AC5966 /* MenuListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003762525ADFB3800AC5966 /* MenuListController.swift */; };
 		10156BD82589372800436627 /* GeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10156BD72589372800436627 /* GeneralTableViewController.swift */; };
 		101C6C25258184F70050CE76 /* DishListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C6C24258184F70050CE76 /* DishListController.swift */; };
 		101C6C28258283F30050CE76 /* LoadFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C6C27258283F30050CE76 /* LoadFirebase.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0516B3C03A9C081E49AE77A2 /* Pods-mealMaker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mealMaker.debug.xcconfig"; path = "Target Support Files/Pods-mealMaker/Pods-mealMaker.debug.xcconfig"; sourceTree = "<group>"; };
+		1003762525ADFB3800AC5966 /* MenuListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListController.swift; sourceTree = "<group>"; };
 		10156BD72589372800436627 /* GeneralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTableViewController.swift; sourceTree = "<group>"; };
 		101C6C24258184F70050CE76 /* DishListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishListController.swift; sourceTree = "<group>"; };
 		101C6C27258283F30050CE76 /* LoadFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFirebase.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				107EB20E256DB3180016D5D3 /* logIn */,
 				107EB1A825670FC10016D5D3 /* WelcomeController.swift */,
+				1003762525ADFB3800AC5966 /* MenuListController.swift */,
 				10C72431259A3D2300CD38DE /* FamilyProfile.swift */,
 				107EB1E8256C755C0016D5D3 /* MenuCreator.swift */,
 				10C7242B258FBB9400CD38DE /* FamilySelectorController.swift */,
@@ -320,6 +323,7 @@
 				107EB1E3256C48170016D5D3 /* textPromptView.swift in Sources */,
 				107EB1A625670BAF0016D5D3 /* LogInController.swift in Sources */,
 				101C6C28258283F30050CE76 /* LoadFirebase.swift in Sources */,
+				1003762625ADFB3800AC5966 /* MenuListController.swift in Sources */,
 				107EB19F25670ABF0016D5D3 /* SetUpController.swift in Sources */,
 				107EB1A325670B910016D5D3 /* RegisterController.swift in Sources */,
 				1028D9502566DCB00037EAE6 /* AppDelegate.swift in Sources */,
