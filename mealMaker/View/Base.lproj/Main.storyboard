@@ -346,6 +346,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="stoppedSearch:" destination="RjB-R5-1PC" eventType="editingDidEnd" id="4WF-4T-8us"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0tw-zg-ccx"/>

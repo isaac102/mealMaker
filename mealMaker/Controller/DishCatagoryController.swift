@@ -21,12 +21,52 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
         return temp.allCategories
     }
     
+    @IBAction func stoppedSearch(_ sender: UITextField) {
+        for i in temp.dishes{
+            print("categories are \(type(of: i["category"]))")
+            var middle: [[String]] = []
+            if type(of: i["category"]) != type(of: [["blah"], ["ble"]]){
+                middle = [i["category"]] as! [[String]]
+            }else{
+                middle = i["category"] as! [[String]]
+            }
+            let cats:[[String]] = middle
+            let names:String = i["name"] as! String
+            print("\(names) has categories \(cats)")
+            for cat in cats{
+                for cata in cat{
+                    if cata.lowercased().contains(sender.text!.lowercased()){
+                        self.correctDishes.append(i)
+                    }
+                }
+            }
+            
+            
+            if names.lowercased().contains(sender.text!.lowercased()){
+                var alreadyAddedDishes:[String] = []
+                for added in correctDishes{
+                    if let addedDish = added["name"] as? String{
+                        alreadyAddedDishes.append(addedDish)
+                    }
+                }
+                if !alreadyAddedDishes.contains(i["name"] as! String){
+                    self.correctDishes.append(i)
+                }
+                
+            }
+            
+                
+            
+        }
+        self.performSegue(withIdentifier: K.Segues.dishCategoriesToDishes, sender: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         temp.allCategories = temp.allCategories.sorted { $0.lowercased() < $1.lowercased() }
         correctDishes = []
     }
     override func viewDidLoad() {
-        print("got this far")
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
