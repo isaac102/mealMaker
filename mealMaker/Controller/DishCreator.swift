@@ -172,6 +172,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                         self.updateDish()
                         Alert.createAlert(title: "Dish Updated", message: "", viewController: self)
+                        LoadFirebase.loadDishes()
                         temp.editDishMode = false
                         self.saveedit.title = "Edit"
                         alert.dismiss(animated: true, completion: nil)

@@ -24,7 +24,7 @@ class DishListController: UIViewController, UITableViewDelegate, UINavigationCon
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        dishes = temp.dishes
+        
         temp.editDishMode = true
 
     }

@@ -15,12 +15,15 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
 
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    var correctDishes: [[String: Any]] = []
+
     var categories: [String] {
         return temp.allCategories
     }
     
     override func viewWillAppear(_ animated: Bool) {
         temp.allCategories = temp.allCategories.sorted { $0.lowercased() < $1.lowercased() }
+        correctDishes = []
     }
     override func viewDidLoad() {
         print("got this far")
@@ -32,9 +35,17 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
     }
     
     
-    func loadDishes(){
+    func loadDishes(selectedCategory: String){
         if(temp.loadedFirebase == true){
+            for i in temp.dishes{
+                if let cats:[String] = i["category"] as? [String]{
+                    if cats.contains(selectedCategory){
+                        correctDishes.append(i)
+                    }
+                }
+            }
             self.performSegue(withIdentifier: K.Segues.dishCategoriesToDishes, sender: self)
+            
             return
         }
         
@@ -52,7 +63,13 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
                 }
             }
             
-            
+            for i in temp.dishes{
+                if let cats:[String] = i["category"] as? [String]{
+                    if cats.contains(selectedCategory){
+                        self.correctDishes.append(i)
+                    }
+                }
+            }
             self.performSegue(withIdentifier: K.Segues.dishCategoriesToDishes, sender: self)
         }
         
@@ -82,13 +99,14 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        loadDishes()
-        
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.dishCategoriesToDishes{
+            let destinationVC = segue.destination as! DishListController
+            destinationVC.dishes = self.correctDishes
+            
+        }
     }
+    
    
 }
 
@@ -115,6 +133,13 @@ extension DishCategoryController:UITableViewDataSource{
             temp.allCategories.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        loadDishes(selectedCategory: categories[indexPath.row])
+        
+        
     }
     
     
