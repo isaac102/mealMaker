@@ -21,6 +21,7 @@ public class temp{
     static var addDishToDay = "0"
     static var allCategories: [String] = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
     static var editDishMode = true
+    static var selectMenuMode = false
     
     
     
