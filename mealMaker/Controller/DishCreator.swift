@@ -51,6 +51,12 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             setEditMode(canEdit: false)
             dish.text = temp.itemSpecifics.itemSpecificName
         }
+        
+        if temp.inCategory != ""{
+            if !temp.itemSpecifics.itemSpecificCategories.contains(temp.inCategory){
+                temp.itemSpecifics.itemSpecificCategories.append(temp.inCategory)
+            }
+        }
    
     }
     
@@ -151,17 +157,22 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     
     @IBAction func savePressed(_ sender: Any) {
+        print(temp.itemSpecifics.itemSpecificName)
         if temp.editDishMode == false{
             temp.editDishMode = true
             saveedit.title = "Save"
         }else{
+            
             if dish.text == ""{
                 Alert.createAlert(title: "Every dish needs a name", message: "", viewController: self)
                 return
             }
             if let name = dish.text{
+                
+                //temp.itemSpecifics.itemSpecificName = name
+                
                 if(!FoodStorage.containsDish(name: name) && !temp.containsDish(name: name)){
-                    
+                    print("categories are \(temp.itemSpecifics.itemSpecificCategories)")
                     FoodStorage.dishes.append(Dish(name: name, category: temp.itemSpecifics.itemSpecificCategories, allergyInfo: temp.itemSpecifics.itemSpecificAllergyInfo, ingredients: temp.itemSpecifics.itemSpecificIngredients, directions: temp.itemSpecifics.itemSpecificDirections, notes: temp.itemSpecifics.itemSpecificNotes))
                     Alert.createAlert(title: "Dish Created!", message: "\(self.dish.text!)", viewController: self)
                     temp.editDishMode = false

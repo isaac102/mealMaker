@@ -64,9 +64,10 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         temp.allCategories = temp.allCategories.sorted { $0.lowercased() < $1.lowercased() }
         correctDishes = []
+        temp.inCategory = ""
     }
     override func viewDidLoad() {
-        
+        temp.inCategory = ""
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
@@ -117,6 +118,12 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
         
     }
     
+    func saveToFirebase(){
+        self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).setData([
+            "categories" : categories
+        ])
+    }
+    
     
     @IBAction func addCategory(_ sender: Any) {
         var textF = UITextField()
@@ -128,7 +135,7 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
                 temp.allCategories.append(capitalized)
             }
             self.tableView.reloadData()
-
+            self.saveToFirebase()
             
             alert.dismiss(animated: true, completion: nil)
             
@@ -138,7 +145,9 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
             textF = alertTextField
         }
         self.present(alert, animated: true, completion: nil)
+        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.dishCategoriesToDishes{
             let destinationVC = segue.destination as! DishListController
@@ -172,11 +181,12 @@ extension DishCategoryController:UITableViewDataSource{
         if editingStyle == .delete{
             temp.allCategories.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveToFirebase()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        temp.inCategory = categories[indexPath.row]
         loadDishes(selectedCategory: categories[indexPath.row])
         
         

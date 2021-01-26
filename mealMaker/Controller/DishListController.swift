@@ -29,6 +29,15 @@ class DishListController: UIViewController, UITableViewDelegate, UINavigationCon
 
     }
     
+    @IBAction func createDish(_ sender: UIBarButtonItem) {
+        temp.itemSpecifics.itemSpecificName = ""
+        temp.itemSpecifics.itemSpecificCategories = ["All"]
+        temp.itemSpecifics.itemSpecificAllergyInfo = []
+        temp.itemSpecifics.itemSpecificDirections = ""
+        temp.itemSpecifics.itemSpecificNotes = ""
+        temp.itemSpecifics.itemSpecificIngredients = []
+        self.performSegue(withIdentifier: K.Segues.DishListToDishCreator, sender: self)
+    }
     
     func loadDish(name:String){
         temp.editDishMode = false

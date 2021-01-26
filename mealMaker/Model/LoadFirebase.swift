@@ -12,15 +12,13 @@ class LoadFirebase{
     public static func loadFirebase(){
         loadDishes()
         loadMenus()
+        loadDishCategories()
         temp.loadedFirebase = true
     }
     
     
     public static func loadDishes(){
         let db = Firestore.firestore()
-        
-        
-        
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).getDocuments { (querySnapshot, error) in
             if let e = error {
                 print("there was an error retrieving data from firestore: \(e)")
@@ -38,7 +36,40 @@ class LoadFirebase{
         }
     }
     
-    
+    public static func loadDishCategories(){
+        let db = Firestore.firestore()
+        let userDoc = db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection)
+        userDoc.getDocument { (document, error) in
+            if let document = document, document.exists{
+                if let category = document.data()?["categories"] as? [String]{
+                    if category.count != 0{
+                        temp.allCategories = category
+                    }else{
+                        db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).setData([
+                            "categories" : ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                        ])
+                        temp.allCategories = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                    }
+                    
+                    
+                }else{
+                    db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).setData([
+                        "categories" : ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                    ])
+                    temp.allCategories = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                }
+                
+            }else{
+                db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).setData([
+                    "categories" : ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                ])
+                temp.allCategories = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+                print("document does not exist")
+            }
+            
+            
+        }
+    }
     
     public static func loadMenus(){
         let db = Firestore.firestore()

@@ -19,8 +19,9 @@ public class temp{
     static var currentMode = K.Modes.regularMode
     static var addedDish = ""
     static var addDishToDay = "0"
-    static var allCategories: [String] = ["All", "Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+    static var allCategories: [String] = []
     static var editDishMode = true
+    static var inCategory = ""
     static var selectMenuMode = false
     
     

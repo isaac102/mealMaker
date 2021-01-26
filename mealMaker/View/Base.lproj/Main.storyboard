@@ -1122,14 +1122,14 @@
                     <navigationItem key="navigationItem" title="Dishes" id="ckb-BH-CoJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2cs-Vg-i8i">
                             <connections>
-                                <action selector="addCatagory:" destination="bH9-gn-Q2x" id="vDJ-x4-lgJ"/>
-                                <segue destination="Bw5-1z-72d" kind="show" identifier="DishListToDishCreator" id="1CV-gu-G1A"/>
+                                <action selector="createDish:" destination="bH9-gn-Q2x" id="Frt-jf-sz4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="jq6-TL-CaH" id="dl5-yP-a6F"/>
                         <outlet property="tableView" destination="yKU-c1-GUq" id="Vq1-Hp-Vh8"/>
+                        <segue destination="Bw5-1z-72d" kind="show" identifier="DishListToDishCreator" id="okk-Bl-L8K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7d8-yF-lYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1497,8 +1497,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="c7U-M0-fc2"/>
-        <segue reference="ZYf-Jh-Qvh"/>
-        <segue reference="1CV-gu-G1A"/>
+        <segue reference="FeR-MK-4lI"/>
+        <segue reference="okk-Bl-L8K"/>
         <segue reference="ge5-fd-dqD"/>
         <segue reference="gwK-mt-t8W"/>
         <segue reference="TfR-EE-0iE"/>
