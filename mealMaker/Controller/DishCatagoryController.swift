@@ -67,6 +67,7 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
         temp.inCategory = ""
     }
     override func viewDidLoad() {
+        temp.allCategories = temp.allCategories.sorted { $0.lowercased() < $1.lowercased() }
         temp.inCategory = ""
         tableView.dataSource = self
         tableView.delegate = self
@@ -133,9 +134,12 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
             if let text = textF.text{
                 let capitalized = text.capitalized
                 temp.allCategories.append(capitalized)
+                temp.allCategories = temp.allCategories.sorted { $0.lowercased() < $1.lowercased() }
             }
-            self.tableView.reloadData()
+            
             self.saveToFirebase()
+            self.tableView.reloadData()
+            
             
             alert.dismiss(animated: true, completion: nil)
             
@@ -151,8 +155,8 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.dishCategoriesToDishes{
             let destinationVC = segue.destination as! DishListController
-            destinationVC.dishes = self.correctDishes
-            
+            temp.dishes = self.correctDishes
+            print("current category is \(temp.inCategory)")
         }
     }
     
@@ -187,7 +191,9 @@ extension DishCategoryController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         temp.inCategory = categories[indexPath.row]
+        print("current category number is \(indexPath.row)")
         loadDishes(selectedCategory: categories[indexPath.row])
+        
         
         
     }

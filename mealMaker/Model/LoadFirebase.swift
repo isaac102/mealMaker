@@ -10,9 +10,10 @@ import Firebase
 class LoadFirebase{
     
     public static func loadFirebase(){
-        loadDishes()
         loadMenus()
         loadDishCategories()
+        loadDishes()
+        
         temp.loadedFirebase = true
     }
     
@@ -28,6 +29,7 @@ class LoadFirebase{
                     var holdDishes:[[String:Any]] = []
                     for doc in snapshotDocument{
                         holdDishes.append(doc.data())
+                        
                     }
                     temp.dishes = holdDishes
                 }

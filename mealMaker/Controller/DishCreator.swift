@@ -45,6 +45,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var saveedit: UIBarButtonItem!
     
     
+    
     override func viewDidLoad() {
         if(temp.editDishMode == false){
             saveedit.title = "Edit"
@@ -57,6 +58,8 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 temp.itemSpecifics.itemSpecificCategories.append(temp.inCategory)
             }
         }
+        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
+        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
    
     }
     
@@ -76,6 +79,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         temp.itemSpecifics.itemSpecificName = ""
         temp.itemSpecifics.itemSpecificNotes = ""
         temp.itemSpecifics.itemSpecificDirections = ""
+        
     }
     
     @IBAction func toIngredients(_ sender: Any) {
@@ -138,6 +142,8 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     func updateDish(){
+        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
+        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(temp.itemSpecifics.itemSpecificName).setData([
             "name": temp.itemSpecifics.itemSpecificName,
             "category": temp.itemSpecifics.itemSpecificCategories,
@@ -157,7 +163,8 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     
     @IBAction func savePressed(_ sender: Any) {
-        print(temp.itemSpecifics.itemSpecificName)
+        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
+        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
         if temp.editDishMode == false{
             temp.editDishMode = true
             saveedit.title = "Save"
@@ -172,9 +179,17 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 //temp.itemSpecifics.itemSpecificName = name
                 
                 if(!FoodStorage.containsDish(name: name) && !temp.containsDish(name: name)){
-                    print("categories are \(temp.itemSpecifics.itemSpecificCategories)")
-                    FoodStorage.dishes.append(Dish(name: name, category: temp.itemSpecifics.itemSpecificCategories, allergyInfo: temp.itemSpecifics.itemSpecificAllergyInfo, ingredients: temp.itemSpecifics.itemSpecificIngredients, directions: temp.itemSpecifics.itemSpecificDirections, notes: temp.itemSpecifics.itemSpecificNotes))
+                    print("current dish is \(temp.itemSpecifics.itemSpecificName)")
+                    print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
+                    FoodStorage.dishes.append(Dish(
+                        name: name,
+                        category: temp.itemSpecifics.itemSpecificCategories,
+                        allergyInfo: temp.itemSpecifics.itemSpecificAllergyInfo,
+                        ingredients: temp.itemSpecifics.itemSpecificIngredients,
+                        directions: temp.itemSpecifics.itemSpecificDirections,
+                        notes: temp.itemSpecifics.itemSpecificNotes))
                     Alert.createAlert(title: "Dish Created!", message: "\(self.dish.text!)", viewController: self)
+                    
                     temp.editDishMode = false
                     saveedit.title = "Edit"
 
@@ -200,7 +215,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             for dish in FoodStorage.dishes{
                 db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(dish.name).setData([
                     "name": dish.name,
-                    "category": categoryList,
+                    "category": dish.category,
                     "allergy": dish.allergyInfo,
                     "ingredients": dish.ingredients,
                     "directions":dish.directions,
@@ -215,8 +230,29 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 }
             
             }
-            
-            LoadFirebase.loadDishes()
+            LoadFirebase.loadMenus()
+            //LoadFirebase.loadDishes()
+            db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).getDocuments { (querySnapshot, error) in
+                if let e = error {
+                    print("there was an error retrieving data from firestore: \(e)")
+                    
+                }else{
+                    if let snapshotDocument = querySnapshot?.documents{
+                        var holdDishes:[[String:Any]] = []
+                        for doc in snapshotDocument{
+                            let cats = doc.data()["category"] as! [String]
+                            if cats.contains(temp.inCategory){
+                                holdDishes.append(doc.data())
+                                
+                            }
+                            
+                            
+                        }
+                        temp.dishes = holdDishes
+                    }
+                }
+                temp.loadedFirebase = true
+            }
             
         }
         

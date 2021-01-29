@@ -15,7 +15,9 @@ class DishListController: UIViewController, UITableViewDelegate, UINavigationCon
     var dishes = temp.dishes
     
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        LoadFirebase.loadDishes()
+    }
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -23,8 +25,8 @@ class DishListController: UIViewController, UITableViewDelegate, UINavigationCon
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        dishes = temp.dishes
         tableView.reloadData()
-        
         temp.editDishMode = true
 
     }
