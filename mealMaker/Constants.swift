@@ -9,6 +9,7 @@ import Foundation
 
 struct K {
     struct Segues{
+        static let FirstSegue = "FirstSegue"
         static let logInToFamilies = "LogInToFamilies"
         static let logInToFamilyJoin = "logInToFamilyJoin"
         static let registerToFamilies = "registerToFamilies"
@@ -27,6 +28,7 @@ struct K {
         static let MenuCreatorToDishCategories = "MenuCreatorToDishCategories"
         static let DishListToDishCreator = "DishListToDishCreator"
         static let MenuListToMenu = "MenuListToMenu"
+        static let SetUpToMenu = "SetUpToMenu"
     }
     
     struct FStore{

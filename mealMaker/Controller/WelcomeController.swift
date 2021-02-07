@@ -10,6 +10,8 @@ import Firebase
 class WelcomeController: UIViewController {
     @IBOutlet weak var familyProfileButton: UIButton!
     let db = Firestore.firestore()
+//    var fromFamController:Bool? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         LoadFirebase.loadFirebase()
@@ -18,7 +20,8 @@ class WelcomeController: UIViewController {
         
         navigationItem.title = temp.currentFamily
         familyProfileButton.layer.cornerRadius = 0.5 * familyProfileButton.bounds.size.width
-        
+//        self.tabBarController?.navigationItem.hidesBackButton = fromFamController
+
         // Do any additional setup after loading the view.
     }
     
@@ -26,6 +29,7 @@ class WelcomeController: UIViewController {
         
         do{
             try Auth.auth().signOut()
+            temp.currentUser = ""
             self.navigationController?.popToRootViewController(animated: true)
         }catch let signOutError as NSError{
             Alert.createAlert(title: "Error", message: "Error signing out :\(signOutError)", viewController: self)

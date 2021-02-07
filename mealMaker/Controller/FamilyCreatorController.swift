@@ -65,6 +65,13 @@ class FamilyCreatorController:UIViewController{
         temp.allFamilies.append(family)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.familyJoinToWelcome{
+            let destinationVC = segue.destination as! WelcomeController
+            destinationVC.navigationItem.hidesBackButton = true
+        }
+    }
+    
     @IBAction func goToCreateFamily(_ sender: UIButton) {
         
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).getDocument { (document, error) in

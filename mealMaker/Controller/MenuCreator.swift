@@ -27,6 +27,9 @@ class MenuCreator: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         if temp.currentMode == K.Modes.addDishToMenuMode{
+            if temp.addedDish == ""{
+                return
+            }
             temp.currentMode = K.Modes.regularMode
             switch temp.addDishToDay {
             case "1":
@@ -202,6 +205,7 @@ class MenuCreator: UIViewController{
     @IBAction func addDishPressed(_ sender: UIButton) {
         temp.currentMode = K.Modes.addDishToMenuMode
         temp.addDishToDay = sender.accessibilityIdentifier!
+        temp.addedDish = ""
         performSegue(withIdentifier: K.Segues.MenuCreatorToDishCategories, sender: self)
     }
     

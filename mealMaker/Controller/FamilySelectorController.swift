@@ -20,13 +20,22 @@ class FamilySelectorController: UIViewController{
         familyPicker.dataSource = self
         familyPicker.delegate = self
         temp.loadedFirebase = false
-        
+        self.title = temp.currentUser
         if let user = Auth.auth().currentUser?.email{
             temp.currentUser = user
         }
         
     }
     
+    @IBAction func logOutPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            temp.currentUser = ""
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch let signOutError as NSError{
+            Alert.createAlert(title: "Error", message: "Error signing out :\(signOutError)", viewController: self)
+        }
+    }
     
     @IBAction func addFamilyPressed(_ sender: UIButton) {
         if !alteredPicker{
