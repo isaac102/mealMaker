@@ -21,6 +21,7 @@ class FamilySelectorController: UIViewController{
         familyPicker.delegate = self
         temp.loadedFirebase = false
         self.title = temp.currentUser
+        navigationItem.hidesBackButton = true
         if let user = Auth.auth().currentUser?.email{
             temp.currentUser = user
         }

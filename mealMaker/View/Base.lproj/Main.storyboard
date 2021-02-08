@@ -82,13 +82,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1@2.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKK-FE-GWe">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKK-FE-GWe">
                                 <rect key="frame" x="50" y="173" width="314" height="34"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qwerty" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqW-EN-oQ4">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqW-EN-oQ4">
                                 <rect key="frame" x="50" y="261" width="314" height="34"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -229,6 +229,9 @@
                                         <state key="normal" title="This Weeks Menu">
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="thisWeeksMenuPressed:" destination="lll-sQ-X8W" eventType="touchUpInside" id="41X-5r-Ifb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViN-79-EqU">
                                         <rect key="frame" x="0.0" y="55.5" width="200" height="35.5"/>
@@ -237,7 +240,7 @@
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vxd-b5-ca6" kind="show" id="CVG-Sq-aTx"/>
+                                            <segue destination="vxd-b5-ca6" kind="show" identifier="WelcomeToMenus" id="CVG-Sq-aTx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eti-yt-2MT">
@@ -708,14 +711,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Menu Creator" id="fRe-xU-nLx" customClass="menu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UGi-k9-o0h">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="UGi-k9-o0h">
                             <connections>
                                 <action selector="savePressed:" destination="jhN-PV-aaG" id="8RN-Qt-GRc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="saveButton" destination="UGi-k9-o0h" id="px3-0B-yoY"/>
+                        <outlet property="saveButton" destination="UGi-k9-o0h" id="wcp-2S-iGr"/>
                         <outletCollection property="otherLabels" destination="7V6-zS-Oaq" collectionClass="NSMutableArray" id="KwR-g7-Cdv"/>
                         <outletCollection property="otherLabels" destination="MYv-tl-JMe" collectionClass="NSMutableArray" id="nOf-GN-Taz"/>
                         <outletCollection property="otherLabels" destination="Xme-fT-uW7" collectionClass="NSMutableArray" id="lq8-x4-Ker"/>
@@ -738,6 +741,7 @@
                         <outletCollection property="removeDishButton" destination="kib-Tv-XRY" collectionClass="NSMutableArray" id="edZ-tt-b0F"/>
                         <segue destination="lza-Wb-WYg" kind="presentation" identifier="MenuCreatorToItemDetail" id="ZYf-Jh-Qvh"/>
                         <segue destination="RjB-R5-1PC" kind="show" identifier="MenuCreatorToDishCategories" id="gwK-mt-t8W"/>
+                        <segue destination="vxd-b5-ca6" kind="show" identifier="MenuCreatorToMenuList" id="J1k-aH-3qk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9g-ot-lOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1304,7 +1308,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="8cP-5g-xLq">
-                                <rect key="frame" x="10" y="448.5" width="394" height="146.5"/>
+                                <rect key="frame" x="10" y="398.5" width="394" height="211.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Family" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPq-NW-0dB">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
@@ -1329,8 +1333,25 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="46" translatesAutoresizingMaskIntoConstraints="NO" id="ZHm-ew-w9b">
+                                        <rect key="frame" x="0.0" y="116.5" width="394" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfE-OG-wsB">
+                                                <rect key="frame" x="0.0" y="0.0" width="126.5" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RKa-vE-rZd">
+                                                <rect key="frame" x="172.5" y="0.0" width="221.5" height="34"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfU-d6-02r">
-                                        <rect key="frame" x="0.0" y="116.5" width="394" height="30"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="394" height="30"/>
                                         <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Go">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1341,12 +1362,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ZHm-ew-w9b" firstAttribute="leading" secondItem="8cP-5g-xLq" secondAttribute="leading" id="2kf-c2-e8U"/>
                                     <constraint firstAttribute="trailing" secondItem="XeW-3S-fzh" secondAttribute="trailing" id="55d-rK-La4"/>
                                     <constraint firstAttribute="trailing" secondItem="IPq-NW-0dB" secondAttribute="trailing" id="D8R-yd-9ys"/>
                                     <constraint firstItem="XeW-3S-fzh" firstAttribute="leading" secondItem="8cP-5g-xLq" secondAttribute="leading" id="Xn3-6f-cSn"/>
                                     <constraint firstAttribute="trailing" secondItem="tfU-d6-02r" secondAttribute="trailing" id="cAP-zd-zPR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZHm-ew-w9b" secondAttribute="trailing" id="lgP-iV-Qrf"/>
                                     <constraint firstItem="IPq-NW-0dB" firstAttribute="leading" secondItem="8cP-5g-xLq" secondAttribute="leading" id="mbc-02-cHl"/>
                                     <constraint firstItem="tfU-d6-02r" firstAttribute="leading" secondItem="8cP-5g-xLq" secondAttribute="leading" id="rRI-6z-YPv"/>
+                                    <constraint firstItem="ZHm-ew-w9b" firstAttribute="height" secondItem="XeW-3S-fzh" secondAttribute="height" id="vuS-aV-rAh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -1355,7 +1379,7 @@
                         <constraints>
                             <constraint firstItem="YYs-vU-0Mj" firstAttribute="trailing" secondItem="44d-9R-9n3" secondAttribute="trailing" constant="10" id="9sd-9c-BO6"/>
                             <constraint firstItem="8cP-5g-xLq" firstAttribute="leading" secondItem="hfP-Ws-pFl" secondAttribute="leading" constant="10" id="E5B-K0-HQv"/>
-                            <constraint firstItem="8cP-5g-xLq" firstAttribute="top" secondItem="44d-9R-9n3" secondAttribute="bottom" constant="150" id="Kbc-Hd-xMA"/>
+                            <constraint firstItem="8cP-5g-xLq" firstAttribute="top" secondItem="44d-9R-9n3" secondAttribute="bottom" constant="100" id="Kbc-Hd-xMA"/>
                             <constraint firstItem="44d-9R-9n3" firstAttribute="top" secondItem="YYs-vU-0Mj" secondAttribute="top" constant="20" id="aRN-Bq-4HB"/>
                             <constraint firstItem="44d-9R-9n3" firstAttribute="leading" secondItem="YYs-vU-0Mj" secondAttribute="leading" constant="10" id="yep-Gx-67I"/>
                             <constraint firstItem="YYs-vU-0Mj" firstAttribute="trailing" secondItem="8cP-5g-xLq" secondAttribute="trailing" constant="10" id="zdN-E8-icz"/>
@@ -1364,6 +1388,7 @@
                     <navigationItem key="navigationItem" title="Families" id="Dsa-kz-T7H"/>
                     <connections>
                         <outlet property="createFamilyName" destination="Iv9-Kn-Fxg" id="Ysi-2x-czj"/>
+                        <outlet property="createFamilyPassword" destination="RKa-vE-rZd" id="Opa-7X-JGa"/>
                         <outlet property="joinFamilyName" destination="VI7-dO-sp0" id="Q4j-2Q-aXg"/>
                         <outlet property="joinFamilyPassword" destination="BcC-dP-tti" id="DAB-Ke-JmS"/>
                         <segue destination="lll-sQ-X8W" kind="show" identifier="familyJoinToWelcome" id="7qF-EO-3pX"/>
@@ -1498,9 +1523,7 @@
                             <constraint firstItem="Twn-44-4uJ" firstAttribute="top" secondItem="jz7-Tf-yhE" secondAttribute="bottom" constant="10" id="sna-xj-eeP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Menus" id="eiL-YS-eeq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YZ8-dM-inO"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Menus" id="eiL-YS-eeq"/>
                     <connections>
                         <outlet property="searchBar" destination="jz7-Tf-yhE" id="QHT-zK-BjJ"/>
                         <outlet property="tableView" destination="Twn-44-4uJ" id="RdO-Vy-eYy"/>
@@ -1550,10 +1573,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c7U-M0-fc2"/>
+        <segue reference="CVG-Sq-aTx"/>
+        <segue reference="tuz-6g-9VC"/>
         <segue reference="ZYf-Jh-Qvh"/>
         <segue reference="38s-Ew-2xN"/>
-        <segue reference="uCk-sx-kI7"/>
+        <segue reference="ge5-fd-dqD"/>
         <segue reference="sDm-QM-DPU"/>
         <segue reference="TfR-EE-0iE"/>
         <segue reference="q3u-wv-ya3"/>

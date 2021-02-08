@@ -31,6 +31,7 @@ class FamilyProfile: UIViewController{
                             self.adminUsers += ", "
                         }
                         self.adminUsersText.text = self.adminUsers
+                        self.displayPassword()
                     }
                     
                 }else{
@@ -46,6 +47,7 @@ class FamilyProfile: UIViewController{
                         }else{
                             for i in regularUsers{
                                 self.noAdminUsers += i
+                                self.noAdminUsers += ", "
                             }
                             self.nonAdminUsersText.text = self.noAdminUsers
                         }
@@ -56,7 +58,16 @@ class FamilyProfile: UIViewController{
                     print("document does not exist")
                 }
         }
-        //password
+        
+        
+    }
+    
+    
+    func displayPassword(){
+        if(!(adminUsersText.text?.contains(temp.currentUser))!){
+            self.passwordtext.text = "......"
+            return
+        }
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.passwordDocument).getDocument { (document, error) in
                 if let document = document, document.exists{
                     if let password = document.data()?[K.FStore.passwordDocument]{

@@ -9,7 +9,9 @@ import Foundation
 
 public class temp{
     
-    
+    static var mustReturnToMenuCreator = false
+    static var transitionDictionary: [Int:[String]] = [1:[], 2:[], 3:[], 4:[], 5:[]]
+    static var useTransitionDictionary = false
     static var dishes:[[String: Any]] = []
     static var menus:[String] = []
     static var currentUser = ""

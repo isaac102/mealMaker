@@ -19,10 +19,11 @@ class MenuCreator: UIViewController{
     var dayDict: [Int:[String]] = [1:[], 2:[], 3:[], 4:[], 5:[]]
     @IBOutlet var addDishButton: [UIButton]!
     @IBOutlet var removeDishButton: [UIButton]!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     var typeValue = Int()
     var pickerView = UIPickerView()
     var currentDay = 1
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     var menuName = ""
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,17 +70,37 @@ class MenuCreator: UIViewController{
                 }
             default:
                 print("error with day of week")
+            
+            }
+            if menuName == "weeklyMenu"{
+                updateMenu(name: "weeklyMenu")
+            }
+            
+        }else{
+            if temp.useTransitionDictionary{
+                self.dayDict = temp.transitionDictionary
+                temp.transitionDictionary = [1:[], 2:[], 3:[], 4:[], 5:[]]
+                temp.useTransitionDictionary = false
+            }
+            reloadDishes()
+            if menuName == "weeklyMenu"{
+                print("setting menu as weekly")
+                saveButton.title = "Replace"
             }
         }
+        
     }
     //updates user interface to match backend storage
     func reloadDishes(){
+        print("Should be reloading dishes")
+        print(dayDict)
         for day in dishesCollection{
             day.text = ""
             for i in dayDict[Int(day.accessibilityIdentifier!)!]!{
                 day.text = day.text! + ", " + i
             }
         }
+        
     }
     
     
@@ -94,6 +115,10 @@ class MenuCreator: UIViewController{
         if menuName != ""{
             self.navigationItem.title = menuName
         }
+        if menuName == "weeklyMenu"{
+            print("setting menu as weekly")
+            saveButton.title = "Replace"
+        }
         //the following makes the menu page un-editable if boolean temp.selectMenuMode is equal to true
 //        if temp.selectMenuMode == true{
 //            for button in addDishButton{
@@ -105,6 +130,7 @@ class MenuCreator: UIViewController{
 //                button.isHidden = false
 //            }
 //        }
+        
     }
     //updates firebase with current menu
     func updateMenu(name:String){
@@ -175,31 +201,33 @@ class MenuCreator: UIViewController{
     
     
     @IBAction func savePressed(_ sender: Any) {
-        
-        print(dayDict)
-        var textF = UITextField()
-        if menuName == ""{
-            
-            let alert = UIAlertController(title: "What would you like to name this menu?", message: "", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
-                if let text = textF.text{
-                    self.menuName = text
-                    self.navigationItem.title = text
-                    
-                    self.saveAttempt()
-                    
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addTextField { (alertTextField) in
-                textF = alertTextField
-            }
-            self.present(alert, animated: true, completion: nil)
+        if menuName == "weeklyMenu"{
+            temp.mustReturnToMenuCreator = true
+            performSegue(withIdentifier: K.Segues.MenuCreatorToMenuList, sender: self)
         }else{
-            saveAttempt()
+            print(dayDict)
+            var textF = UITextField()
+            if menuName == ""{
+                
+                let alert = UIAlertController(title: "What would you like to name this menu?", message: "", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+                    if let text = textF.text{
+                        self.menuName = text
+                        self.navigationItem.title = text
+                        
+                        self.saveAttempt()
+                        
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addTextField { (alertTextField) in
+                    textF = alertTextField
+                }
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                saveAttempt()
+            }
         }
-        
-
     }
     
     @IBAction func addDishPressed(_ sender: UIButton) {
@@ -236,7 +264,12 @@ class MenuCreator: UIViewController{
         
         
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == K.Segues.MenuCreatorToMenuList{
+//            let destinationVC = segue.destination as! MenuListController
+//            destinationVC.selectingWeeklyMenu = true
+//        }
+    }
 }
 
 extension MenuCreator:UIPickerViewDataSource, UIPickerViewDelegate{

@@ -35,7 +35,7 @@ class GeneralTableViewController: UIViewController, UIPickerViewDataSource, UIPi
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var list:[String] = []
-    var notIncludedCategories:[String] = ["Meat", "Dairy", "Poultry", "Vegetables", "Fruits", "Carbs"]
+    var notIncludedCategories:[String] = temp.allCategories
     
     @IBOutlet weak var addItemOutlet: UIButton!
     

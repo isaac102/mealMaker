@@ -29,6 +29,8 @@ struct K {
         static let DishListToDishCreator = "DishListToDishCreator"
         static let MenuListToMenu = "MenuListToMenu"
         static let SetUpToMenu = "SetUpToMenu"
+        static let WelcomeToMenus = "WelcomeToMenus"
+        static let MenuCreatorToMenuList = "MenuCreatorToMenuList"
     }
     
     struct FStore{
