@@ -36,35 +36,35 @@ class MenuCreator: UIViewController{
             case "1":
                 for label in dishesCollection{
                     if label.accessibilityIdentifier == "1"{
-                        label.text = label.text! + temp.addedDish + ", "
+                        label.text = label.text! + formatDish(food: temp.addedDish) + ", "
                         dayDict[1]?.append(temp.addedDish)
                     }
                 }
             case "2":
                 for label in dishesCollection{
                     if label.accessibilityIdentifier == "2"{
-                        label.text = label.text! + temp.addedDish + ", "
+                        label.text = label.text! + formatDish(food: temp.addedDish) + ", "
                         dayDict[2]?.append(temp.addedDish)
                     }
                 }
             case "3":
                 for label in dishesCollection{
                     if label.accessibilityIdentifier == "3"{
-                        label.text = label.text! + temp.addedDish + ", "
+                        label.text = label.text! + formatDish(food: temp.addedDish) + ", "
                         dayDict[3]?.append(temp.addedDish)
                     }
                 }
             case "4":
                 for label in dishesCollection{
                     if label.accessibilityIdentifier == "4"{
-                        label.text = label.text! + temp.addedDish + ", "
+                        label.text = label.text! + formatDish(food: temp.addedDish) + ", "
                         dayDict[4]?.append(temp.addedDish)
                     }
                 }
             case "5":
                 for label in dishesCollection{
                     if label.accessibilityIdentifier == "5"{
-                        label.text = label.text! + temp.addedDish + ", "
+                        label.text = label.text! + formatDish(food: temp.addedDish) + ", "
                         dayDict[5]?.append(temp.addedDish)
                     }
                 }
@@ -90,6 +90,7 @@ class MenuCreator: UIViewController{
         }
         
     }
+    
     //updates user interface to match backend storage
     func reloadDishes(){
         print("Should be reloading dishes")
@@ -97,10 +98,21 @@ class MenuCreator: UIViewController{
         for day in dishesCollection{
             day.text = ""
             for i in dayDict[Int(day.accessibilityIdentifier!)!]!{
-                day.text = day.text! + ", " + i
+                day.text = formatDish(food: i) + ", " + day.text!
             }
         }
-        
+    }
+    
+    //removes spaces at beginning and end of food
+    func formatDish(food:String) -> String{
+        var result:String = food
+        if result[0] == " "{
+            result = result[1..<food.count]
+        }
+        if result[result.count-1] == " "{
+            result = result[0..<result.count-1]
+        }
+        return result
     }
     
     
@@ -132,6 +144,7 @@ class MenuCreator: UIViewController{
 //        }
         
     }
+    
     //updates firebase with current menu
     func updateMenu(name:String){
         self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.menuDocument).collection(K.FStore.menuCollection).document(name).setData([
@@ -291,5 +304,31 @@ extension MenuCreator:UIPickerViewDataSource, UIPickerViewDelegate{
         typeValue = row
         
         
+    }
+}
+extension String {
+
+    var length: Int {
+        return count
+    }
+
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
+    }
+
+    func substring(fromIndex: Int) -> String {
+        return self[min(fromIndex, length) ..< length]
+    }
+
+    func substring(toIndex: Int) -> String {
+        return self[0 ..< max(0, toIndex)]
+    }
+
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
     }
 }
