@@ -84,7 +84,6 @@ class MenuCreator: UIViewController{
             }
             reloadDishes()
             if menuName == "weeklyMenu"{
-                print("setting menu as weekly")
                 saveButton.title = "Replace"
             }
         }
@@ -93,8 +92,7 @@ class MenuCreator: UIViewController{
     
     //updates user interface to match backend storage
     func reloadDishes(){
-        print("Should be reloading dishes")
-        print(dayDict)
+        
         for day in dishesCollection{
             day.text = ""
             for i in dayDict[Int(day.accessibilityIdentifier!)!]!{
@@ -128,7 +126,6 @@ class MenuCreator: UIViewController{
             self.navigationItem.title = menuName
         }
         if menuName == "weeklyMenu"{
-            print("setting menu as weekly")
             saveButton.title = "Replace"
         }
         //the following makes the menu page un-editable if boolean temp.selectMenuMode is equal to true
@@ -159,7 +156,6 @@ class MenuCreator: UIViewController{
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
-                print("Document successfully written!")
                 Alert.createAlert(title: "This menu has been updated", message: "", viewController: self)
 
             }
@@ -196,9 +192,8 @@ class MenuCreator: UIViewController{
                 if let err = err {
                     print("Error writing document: \(err)")
                 } else {
-                    print("Document successfully written!")
                     temp.menus.append(self.menuName)
-                    print(temp.menus)
+                    
 
                     Alert.createAlert(title: "This menu has been added", message: "", viewController: self)
 
@@ -218,8 +213,7 @@ class MenuCreator: UIViewController{
             temp.mustReturnToMenuCreator = true
             performSegue(withIdentifier: K.Segues.MenuCreatorToMenuList, sender: self)
         }else{
-            print(dayDict)
-            var textF = UITextField()
+                        var textF = UITextField()
             if menuName == ""{
                 
                 let alert = UIAlertController(title: "What would you like to name this menu?", message: "", preferredStyle: UIAlertController.Style.alert)

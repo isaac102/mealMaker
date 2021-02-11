@@ -1418,8 +1418,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Users Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d14-tJ-Mo6">
-                                <rect key="frame" x="20" y="183" width="133" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Users Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d14-tJ-Mo6">
+                                <rect key="frame" x="20" y="183" width="384" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1442,8 +1442,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non admin users text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9er-4K-v1P">
-                                <rect key="frame" x="20" y="441.5" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non admin users text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9er-4K-v1P">
+                                <rect key="frame" x="20" y="441.5" width="384" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1458,9 +1458,11 @@
                             <constraint firstItem="aOS-qZ-IHI" firstAttribute="centerY" secondItem="czP-wh-uh9" secondAttribute="centerY" id="7eQ-wz-Mxd"/>
                             <constraint firstItem="W2L-ez-Y79" firstAttribute="centerY" secondItem="KgT-eM-QCQ" secondAttribute="centerY" id="7uv-Gw-dYs"/>
                             <constraint firstItem="W2L-ez-Y79" firstAttribute="leading" secondItem="hKq-a7-1o6" secondAttribute="leading" constant="10" id="D8N-si-Nqv"/>
+                            <constraint firstItem="hKq-a7-1o6" firstAttribute="trailing" secondItem="9er-4K-v1P" secondAttribute="trailing" constant="10" id="EEx-ED-dY0"/>
                             <constraint firstItem="d14-tJ-Mo6" firstAttribute="top" secondItem="Ftw-gc-H67" secondAttribute="bottom" constant="10" id="PiP-CD-ruE"/>
                             <constraint firstItem="czP-wh-uh9" firstAttribute="leading" secondItem="aOS-qZ-IHI" secondAttribute="trailing" constant="10" id="QjS-EG-0Dh"/>
                             <constraint firstItem="czP-wh-uh9" firstAttribute="top" secondItem="cmV-kU-v9S" secondAttribute="bottom" constant="10" id="WJi-lg-KdE"/>
+                            <constraint firstItem="hKq-a7-1o6" firstAttribute="trailing" secondItem="d14-tJ-Mo6" secondAttribute="trailing" constant="10" id="WVX-76-vkY"/>
                             <constraint firstItem="9er-4K-v1P" firstAttribute="leading" secondItem="hKq-a7-1o6" secondAttribute="leading" constant="20" id="bg9-uM-9OR"/>
                             <constraint firstItem="Ftw-gc-H67" firstAttribute="top" secondItem="aOS-qZ-IHI" secondAttribute="bottom" constant="50" id="nkU-1C-N8h"/>
                             <constraint firstItem="d14-tJ-Mo6" firstAttribute="leading" secondItem="hKq-a7-1o6" secondAttribute="leading" constant="20" id="rxM-h7-1jc"/>

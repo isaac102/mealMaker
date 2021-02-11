@@ -23,7 +23,7 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
     
     @IBAction func stoppedSearch(_ sender: UITextField) {
         for i in temp.dishes{
-            print("categories are \(type(of: i["category"]))")
+            
             var middle: [[String]] = []
             if type(of: i["category"]) != type(of: [["blah"], ["ble"]]){
                 middle = [i["category"]] as! [[String]]
@@ -32,7 +32,7 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
             }
             let cats:[[String]] = middle
             let names:String = i["name"] as! String
-            print("\(names) has categories \(cats)")
+            
             for cat in cats{
                 for cata in cat{
                     if cata.lowercased().contains(sender.text!.lowercased()){
@@ -156,7 +156,7 @@ class DishCategoryController:UIViewController, UITableViewDelegate{
         if segue.identifier == K.Segues.dishCategoriesToDishes{
             let destinationVC = segue.destination as! DishListController
             temp.dishes = self.correctDishes
-            print("current category is \(temp.inCategory)")
+            
         }
     }
     
@@ -191,7 +191,7 @@ extension DishCategoryController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         temp.inCategory = categories[indexPath.row]
-        print("current category number is \(indexPath.row)")
+        
         loadDishes(selectedCategory: categories[indexPath.row])
         
         

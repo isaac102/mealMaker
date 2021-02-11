@@ -58,8 +58,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 temp.itemSpecifics.itemSpecificCategories.append(temp.inCategory)
             }
         }
-        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
-        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
+        
    
     }
     
@@ -127,7 +126,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                     
-                    print("You selected " + self.typeValue )
+                    
                     if !self.categoryList.contains(self.typeValue){
                         self.categoryList.append(self.typeValue)
                         
@@ -142,8 +141,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     func updateDish(){
-        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
-        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
+        
         db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.dishCollection).collection(K.FStore.dishCollection).document(temp.itemSpecifics.itemSpecificName).setData([
             "name": temp.itemSpecifics.itemSpecificName,
             "category": temp.itemSpecifics.itemSpecificCategories,
@@ -163,8 +161,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
 
     
     @IBAction func savePressed(_ sender: Any) {
-        print("current dish is \(temp.itemSpecifics.itemSpecificName)")
-        print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
+        
         if temp.editDishMode == false{
             temp.editDishMode = true
             saveedit.title = "Save"
@@ -179,8 +176,7 @@ class DishCreator: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 //temp.itemSpecifics.itemSpecificName = name
                 
                 if(!FoodStorage.containsDish(name: name) && !temp.containsDish(name: name)){
-                    print("current dish is \(temp.itemSpecifics.itemSpecificName)")
-                    print("current dish category is \(temp.itemSpecifics.itemSpecificCategories)")
+                    
                     FoodStorage.dishes.append(Dish(
                         name: name,
                         category: temp.itemSpecifics.itemSpecificCategories,

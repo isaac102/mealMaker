@@ -92,7 +92,7 @@ class GeneralTableViewController: UIViewController, UIPickerViewDataSource, UIPi
                     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                         
-                        print("You selected " + self.typeValue )
+                        
                         if !self.list.contains(self.typeValue){
                             if(self.typeValue == ""){
                                 self.typeValue = self.notIncludedCategories[0]

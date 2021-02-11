@@ -94,7 +94,7 @@ class WelcomeController: UIViewController {
                 destinationVC.dayDict = self.dayDict
                 destinationVC.menuName = "weeklyMenu"
             }else{
-                print("correct preperation")
+                
                 destinationVC.menuName = ""
                 destinationVC.dayDict = [1:[], 2:[], 3:[], 4:[], 5:[]]
             }

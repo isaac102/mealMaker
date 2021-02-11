@@ -98,7 +98,7 @@ class FamilyCreatorController:UIViewController{
                                 
     //                            self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(newName).document(K.FStore.dishCollection).collection(K.FStore.dishCollection)
                                 FoodStorage.createSampleDish(familyName: newName)
-                                print("HERE>>>>>>>>>>>>>>>>>")
+                                
                                 self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).updateData([
                                     "families" : FieldValue.arrayUnion([newName])
                                 ])
@@ -109,7 +109,7 @@ class FamilyCreatorController:UIViewController{
                                 self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(newName).document(K.FStore.passwordDocument).setData([K.FStore.passwordDocument: password])
                                 self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(newName).document(K.FStore.adminUsersDocument).setData([K.FStore.adminUsersDocument: ["\(temp.currentUser)"]])
                                 self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(newName).document(K.FStore.regularUsers).setData([K.FStore.regularUsers: [""]])
-                                print("HERE<<<<<<<<<<<<<<<<<<<<<")
+                                
                                 temp.currentFamily = newName
                                 self.performSegue(withIdentifier: K.Segues.familyJoinToWelcome, sender: self)
                             }

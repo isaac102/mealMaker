@@ -24,7 +24,7 @@ class LogInController: UIViewController {
                     Alert.createAlert(title: "Error", message: e.localizedDescription, viewController: self)
                     
                 }else{
-                    print("trying to perform segue")
+                    
                     let userDoc = self.db.collection(K.FStore.userCollection).document(email)
                     userDoc.getDocument { (document, error) in
                         if let document = document, document.exists{

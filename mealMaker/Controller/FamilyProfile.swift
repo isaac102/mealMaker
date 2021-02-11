@@ -46,10 +46,10 @@ class FamilyProfile: UIViewController{
                             self.nonAdminUsersText.text = "NO NON ADMIN USERS"
                         }else{
                             for i in regularUsers{
-                                self.noAdminUsers += i
+                                self.noAdminUsers += self.formatEmail(email: i)
                                 self.noAdminUsers += ", "
                             }
-                            self.nonAdminUsersText.text = self.noAdminUsers
+                            self.nonAdminUsersText.text = self.noAdminUsers[2..<self.noAdminUsers.count]
                         }
                         
                     }
@@ -60,6 +60,18 @@ class FamilyProfile: UIViewController{
         }
         
         
+    }
+    
+    //removes spaces at beginning and end of food
+    func formatEmail(email:String) -> String{
+        var result:String = email
+        if result[0] == " "{
+            result = result[1..<result.count]
+        }
+        if result[result.count-1] == " "{
+            result = result[0..<result.count-1]
+        }
+        return result
     }
     
     

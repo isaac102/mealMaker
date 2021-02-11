@@ -89,7 +89,7 @@ class MenuListController: UIViewController, UITableViewDelegate, UINavigationCon
                     self.dayDict[5] = friday
                 }
                 temp.transitionDictionary = self.dayDict
-                print("set transition dictionary to be \(self.dayDict)")
+                
                 temp.useTransitionDictionary = true
                 self.navigationController?.popViewController(animated: true)
                 self.db.collection(K.FStore.familyCollection).document(K.FStore.familyDocument).collection(temp.currentFamily).document(K.FStore.menuDocument).collection(K.FStore.menuCollection).document("weeklyMenu").setData([

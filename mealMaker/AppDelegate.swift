@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             if let fam = document.data()?["families"] as? [String]{
                                 
                                 temp.allFamilies = fam
-                                print("families set")
+                                
                                 
                                 self.window?.rootViewController = mainScreenVC
                             }
@@ -49,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
             
             temp.currentUser = email
-            print("set user email")
+            
             return true
         } else {
             
             self.window?.rootViewController = mainScreenVC
-            print("no user")
+            
             return true
         }
         
